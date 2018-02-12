@@ -49,12 +49,15 @@ function newGame() {
 	gameState = 'started';
 	setGameElements();
 	playerNameElem.innerHTML = player.name;
-	//setGamePoints(); // This function has not been created yet
 	}
 }
 
 function playerPick(playerPick) {
-    console.log(playerPick);
+	var computerPick = getComputerPick();
+	playerPickElem.innerHTML = playerPick;
+	computerPickElem.innerHTML = computerPick;
+	checkRoundWinner(playerPick, computerPick);
+	console.log(playerPick);
 }
 
 function getComputerPick() {
@@ -66,12 +69,6 @@ var playerPickElem = document.getElementById('js-playerPick'),
 	computerPickElem = document.getElementById('js-computerPick'),
 	playerResultElem = document.getElementById('js-playerResult'),
 	computerResultElem = document.getElementById('js-computerResult');
-
-function playerPick(playerPick) {
-	var computerPick = getComputerPick();
-	playerPickElem.innerHTML = playerPick;
-	computerPickElem.innerHTML = computerPick;
-}
 
 function checkRoundWinner(playerPick, computerPick) {
 	playerResultElem.innerHTML = computerResultElem.innerHTML = '';
@@ -91,13 +88,7 @@ function checkRoundWinner(playerPick, computerPick) {
 		computerResultElem.innerHTML = "Win!";
 		computer.score++;
 	}
-}
-
-function playerPick(playerPick) {
-	var computerPick = getComputerPick();
-	playerPickElem.innerHTML = playerPick;
-	computerPickElem.innerHTML = computerPick;
-	checkRoundWinner(playerPick, computerPick);
+	setGamePoints();
 }
 
 function setGamePoints() {
